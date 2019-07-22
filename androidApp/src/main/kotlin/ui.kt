@@ -2,10 +2,10 @@ package org.konan.multiplatform
 
 import android.app.Application
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
 import android.widget.LinearLayout
 import android.widget.TextView
-import org.greeting.Factory
+import androidx.appcompat.app.AppCompatActivity
+import org.greeting.Greeting
 import kotlin.properties.Delegates
 
 class MyApplication : Application() {
@@ -19,15 +19,21 @@ class MainActivity : AppCompatActivity() {
 
     private var rootLayout: LinearLayout by Delegates.notNull()
 
+    private val greeting: Greeting = Greeting()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        rootLayout = findViewById(R.id.main_view) as LinearLayout
+        rootLayout = findViewById(R.id.main_view)
         rootLayout.removeAllViews()
 
-        val product = Factory.create(mapOf("user" to "JetBrains"))
         val tv = TextView(this)
+/*
+        val product = Factory.create(mapOf("user" to "JetBrains"))
         tv.text = product.toString()
+*/
+        tv.text = greeting.greeting()
+
         rootLayout.addView(tv)
     }
 }

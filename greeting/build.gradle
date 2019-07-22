@@ -7,9 +7,9 @@ group = 'org.greeting'
 version = 1.0
 
 android {
-    compileSdkVersion 27
+    compileSdkVersion 28
     defaultConfig {
-        minSdkVersion 15
+        minSdkVersion 21
     }
     buildTypes {
         release {
@@ -57,12 +57,24 @@ kotlin {
         commonMain {
             dependencies {
                 implementation 'org.jetbrains.kotlin:kotlin-stdlib-common'
+                implementation "com.soywiz.korlibs.klock:klock:1.5.0"
+                implementation "com.suparnatural:fs-core-metadata:1.0.2"
             }
         }
         commonTest {
             dependencies {
                 implementation 'org.jetbrains.kotlin:kotlin-test-common'
                 implementation 'org.jetbrains.kotlin:kotlin-test-annotations-common'
+            }
+        }
+        androidLibMain {
+            dependencies {
+                implementation 'com.suparnatural:fs-core-android:1.0.2'
+            }
+        }
+        iosMain {
+            dependencies {
+                implementation 'com.suparnatural:fs-core-iosx64:1.0.2'
             }
         }
     }
